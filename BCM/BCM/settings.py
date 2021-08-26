@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'phonenumber_field',
 
-    'Users',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -118,10 +118,16 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+AUTH_USER_MODEL = 'accounts.Users'
+
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny',
+
     ]
 }
+ 
+# SILENCED_SYSTEM_CHECKS = ['auth.E003']
